@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <div class="output_div">
+                <input type="text" placeholder="0" name="output" id="output" class="output">
+            </div>
+            <div class="buttons_div">
+            <div class="row top_row">
+                <button onclick="allClear()">AC</button>
+                <button onclick="deleteNum()">Del</button>
+                <button onclick="displayNum('%')">%</button>
+                <button onclick="displayNum('/')">/</button>
+            </div>
+            <div class="row">
+                <button onclick="displayNum('7')">7</button>
+                <button onclick="displayNum('8')">8</button>
+                <button onclick="displayNum('9')">9</button>
+                <button class="color_btn" onclick="displayNum('*')">*</button>
+            </div>
+            <div class="row">
+                <button onclick="displayNum('4')">4</button>
+                <button onclick="displayNum('5')">5</button>
+                <button onclick="displayNum('6')">6</button>
+                <button class="color_btn" onclick="displayNum('-')">-</button>
+            </div>
+            <div class="row">
+                <button onclick="displayNum('1')">1</button>
+                <button onclick="displayNum('2')">2</button>
+                <button onclick="displayNum('3')">3</button>
+                <button class="color_btn" onclick="displayNum('+')">+</button>
+            </div>
+            <div class="row">
+                <button onclick="displayNum('0')">0</button>
+                <button onclick="displayNum('00')">00</button>
+                <button onclick="displayNum('.')">.</button>
+                <button class="equal" onclick="calculate()">=</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var outputDiv = document.getElementById("output");
+
+        const displayNum = (num) =>{
+            outputDiv.value += num;
+        }
+
+        const deleteNum = () =>{
+            outputDiv.value = outputDiv.value.slice(0,-1);
+        }
+        const allClear = () =>{
+            outputDiv.value = '';
+        }
+        const calculate = () =>{
+            try{
+
+                outputDiv.value = eval(outputDiv.value);
+            }
+            catch(err){
+                outputDiv.value = "Invalid Number";
+            }
+        }
+    </script>
+</body>
+</html>
